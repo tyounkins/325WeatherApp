@@ -58,7 +58,7 @@ public class GeocodingParser {
 		adr+= ",+" + address.getCity().replaceAll(" ", "+");
 		adr+= ",+" + address.getState().replaceAll(" ", "+");
 		
-		System.out.println(adr);
+//		System.out.println(adr);
 		return adr;
 		
 	}

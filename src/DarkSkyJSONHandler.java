@@ -1,10 +1,10 @@
 import java.net.URI;
 import java.net.http.*;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.sql.Time;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.net.*;
-
 import org.json.*;
 
 public class DarkSkyJSONHandler {
@@ -12,11 +12,6 @@ public class DarkSkyJSONHandler {
 	static double latitude;
 	static double longitude;
 	Address address;
-
-	public static void main(String args[]) {
-		Address address = new Address("215 N. Russell Street", "West Lafayette", "IN");
-		DarkSkyJSONHandler js = new DarkSkyJSONHandler(address);
-	}
 
 	public DarkSkyJSONHandler(Address a) {
 
@@ -37,16 +32,21 @@ public class DarkSkyJSONHandler {
 
 			System.out.println("result: " + result);
 			
-//			JSONObject jsobj = new JSONObject(result);
-//			JSONArray results = jsobj.getJSONArray("results");
-//			JSONObject resultsAll = (JSONObject) results.get(0);
-//			JSONObject geometry = (JSONObject) resultsAll.get("geometry");
-//			JSONObject location = (JSONObject) geometry.get("location");
-//
-//			latitude = location.getDouble("lat");
-//			longitude = location.getDouble("lng");
-//
-//			System.out.println("lat: " + latitude + "\nlongitude: " + longitude);
+			JSONObject jsobj = new JSONObject(result);
+			
+			//get DATAAAAAA!!!!!!!!
+			
+			JSONObject currently = jsobj.getJSONObject("currently");
+			
+			String summary = currently.getString("summary");
+			double temperature = currently.getDouble("temperature");
+			double feelsLike = currently.getDouble("apparentTemperature");
+			System.out.println(summary);
+			System.out.println("Temperature: " + temperature + "°F");
+			System.out.println("Feels Like: " + feelsLike + "°F");
+			
+			//7 day forecast - starts at line 1312
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

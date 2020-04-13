@@ -1,10 +1,18 @@
+/* CNIT 325 Final Group Project
+ * Weather Application
+ * 
+ * Authors:
+ * Taylor Younkins
+ * Taylor Kern
+ */
+
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("this is the Main class.");
-		
+		Address address = new Address("215 N. Russell Street", "West Lafayette", "IN");
+		DarkSkyJSONHandler js = new DarkSkyJSONHandler(address);
 	}
 
 }
