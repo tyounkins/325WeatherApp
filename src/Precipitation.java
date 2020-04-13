@@ -2,7 +2,7 @@
 public class Precipitation
 {
 	private String type = new String();
-	private double probability = new double;
+	private double probability = 0.0;
 	
 	public String getTypePrecip()
 	{
@@ -14,10 +14,11 @@ public class Precipitation
 		type = s;
 	}
 	
-	public double getProbability
+	public double getProbability()
 	{
 		return probability;
 	}
+	
 	
 	public void setProbability(double d)
 	{
