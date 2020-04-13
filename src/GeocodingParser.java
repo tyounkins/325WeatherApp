@@ -67,6 +67,7 @@ public class GeocodingParser {
 		
 		String apiAddr = toGeocodingString();
 
+		//test
 		HttpClient client = HttpClient.newHttpClient();
 		
 		//215+N.+Russell+Street,+West+Lafayette,+IN
