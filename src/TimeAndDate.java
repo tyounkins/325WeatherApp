@@ -1,5 +1,5 @@
 
 /* interface */
-public class TimeAndDate {
+public interface TimeAndDate {
 	
 }

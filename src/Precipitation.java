@@ -9,6 +9,11 @@ public class Precipitation {
 		this.probability = probability;
 	}
 
+	@Override
+	public String toString() {
+		return "Precipitation [type=" + type + ", probability=" + probability + "]";
+	}
+
 	public String getTypePrecip() {
 		return type;
 	}

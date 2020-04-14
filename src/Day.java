@@ -20,6 +20,12 @@ public class Day
 		this.summaryCurrent = summaryCurrent;
 	}
 	
+	@Override
+	public String toString() {
+		return "Day [date=" + date + ", dayPrecip=" + dayPrecip + ", dayTemp=" + dayTemp + ", summaryDay=" + summaryDay
+				+ ", summaryCurrent=" + summaryCurrent + "]";
+	}
+
 	public Date getDate() {
 		return date;
 	}

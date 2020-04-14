@@ -20,6 +20,12 @@ public class Temperature {
 		this.feelsLike = apparentCurrTemp;
 	}
 
+	@Override
+	public String toString() {
+		return "Temperature [minTemp=" + minTemp + ", maxTemp=" + maxTemp + ", lowTemp=" + lowTemp + ", highTemp="
+				+ highTemp + ", currentTemp=" + currentTemp + ", feelsLike=" + feelsLike + "]";
+	}
+
 	public double getMinTemp() {
 		return minTemp;
 	}
