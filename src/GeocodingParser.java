@@ -6,6 +6,9 @@ import java.util.concurrent.ExecutionException;
 import java.net.*;
 import org.json.*;
 
+/* Author(s): Taylor Younkins */
+
+
 public class GeocodingParser {
 	
 	double latitude; 
@@ -58,7 +61,6 @@ public class GeocodingParser {
 		adr+= ",+" + address.getCity().replaceAll(" ", "+");
 		adr+= ",+" + address.getState().replaceAll(" ", "+");
 		
-//		System.out.println(adr);
 		return adr;
 		
 	}
@@ -66,11 +68,8 @@ public class GeocodingParser {
 	public static CompletableFuture<String> handler() {
 		
 		String apiAddr = toGeocodingString();
-
-		//test
 		HttpClient client = HttpClient.newHttpClient();
 		
-		//215+N.+Russell+Street,+West+Lafayette,+IN
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(
 				"https://maps.googleapis.com/maps/api/geocode/json?address=" + apiAddr + "&key=AIzaSyAjZHAcljtCjOY8PEL9AkMIDJhuVeXGA7Q"))
 				.build();

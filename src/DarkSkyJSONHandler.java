@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutionException;
 import java.net.*;
 import org.json.*;
 
+/* Author(s): Taylor Younkins */
+
 public class DarkSkyJSONHandler {
 
 	static double latitude;
@@ -21,36 +23,25 @@ public class DarkSkyJSONHandler {
 		GeocodingParser gp = new GeocodingParser(address);
 		latitude = gp.getLatitude();
 		longitude = gp.getLongitude();
-		parser();
 
 	}
 
-	public void parser() {
+	public JSONObject parser() {
+
 		try {
 			CompletableFuture<String> cf = handler();
 			String result = cf.get();
 
 			System.out.println("result: " + result);
-			
-			JSONObject jsobj = new JSONObject(result);
-			
-			//get DATAAAAAA!!!!!!!!
-			
-			JSONObject currently = jsobj.getJSONObject("currently");
-			
-			String summary = currently.getString("summary");
-			double temperature = currently.getDouble("temperature");
-			double feelsLike = currently.getDouble("apparentTemperature");
-			System.out.println(summary);
-			System.out.println("Temperature: " + temperature + "°F");
-			System.out.println("Feels Like: " + feelsLike + "°F");
-			
-			//7 day forecast - starts at line 1312
 
+			JSONObject jsobj = new JSONObject(result);
+
+			return jsobj;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static CompletableFuture<String> handler() {

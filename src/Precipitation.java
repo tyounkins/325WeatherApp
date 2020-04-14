@@ -1,7 +1,13 @@
 
 public class Precipitation {
-	private String type = new String();
-	private double probability = 0.0;
+	private String type;
+	private double probability;
+	
+	public Precipitation(String type, double probability) {
+		super();
+		this.type = type;
+		this.probability = probability;
+	}
 
 	public String getTypePrecip() {
 		return type;
@@ -18,4 +24,6 @@ public class Precipitation {
 	public void setProbability(double d) {
 		probability = d;
 	}
+
+
 }
