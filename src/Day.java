@@ -10,14 +10,15 @@ public class Day
 	private Temperature dayTemp;
 	private String summaryDay;
 	private String summaryCurrent;
+	private Temperature[] hourlyTemps; //  //possible if GUI poeple decide to show hourly temperature changes? 
 	
-	public Day(Date date, Precipitation dayPrecip, Temperature dayTemp, String summaryDay, String summaryCurrent) {
+	public Day(Date date, Precipitation dayPrecip, Temperature dayTemp, String summaryDay) {
 		super();
 		this.date = date;
 		this.dayPrecip = dayPrecip;
 		this.dayTemp = dayTemp;
 		this.summaryDay = summaryDay;
-		this.summaryCurrent = summaryCurrent;
+		summaryCurrent = "";
 	}
 	
 	@Override
@@ -38,9 +39,20 @@ public class Day
 	public String getSummaryDay() {
 		return summaryDay;
 	}
+	
+	
+	
+	//only to be used for present day, if we choose to use it at all
 	public String getSummaryCurrent() {
 		return summaryCurrent;
 	}
+	
+	public void setCurrentSummary(String cs) {
+		summaryCurrent = cs;
+	}
+	
+	
+	
 	public void setDate(Date date) {
 		this.date = date;
 	}

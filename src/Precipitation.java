@@ -3,8 +3,9 @@ public class Precipitation {
 	private String type;
 	private double probability;
 	
-	public Precipitation(String type, double probability) {
-		super();
+	//potentially add a time?
+	
+	public Precipitation(double probability, String type) {
 		this.type = type;
 		this.probability = probability;
 	}

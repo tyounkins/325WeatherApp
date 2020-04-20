@@ -22,8 +22,8 @@ public class Temperature {
 
 	@Override
 	public String toString() {
-		return "Temperature [minTemp=" + minTemp + ", maxTemp=" + maxTemp + ", lowTemp=" + lowTemp + ", highTemp="
-				+ highTemp + ", currentTemp=" + currentTemp + ", feelsLike=" + feelsLike + "]";
+		return "Temperature [minTemp=" + minTemp + "°F, maxTemp=" + maxTemp + "°F, lowTemp=" + lowTemp + "°F, highTemp="
+				+ highTemp + "°F, currentTemp=" + currentTemp + "°F, feelsLike=" + feelsLike + "°F]";
 	}
 
 	public double getMinTemp() {
