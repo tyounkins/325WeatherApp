@@ -14,15 +14,13 @@ import javax.swing.JTextField;
  * 
  */
 
-
-public class InputGUI extends JFrame implements ActionListener{
+public class InputGUI extends JFrame implements ActionListener {
 	JPanel pnlContain;
 	JLabel lblstreet, lblcity, lblstate, lblcountry;
 	JTextField txtstreet, txtcity, txtstate, txtcountry;
 	JButton btnexit, btnclear, btnenter;
-	
-	public InputGUI()
-	{
+
+	public InputGUI() {
 		Container cp = getContentPane();
 		lblstreet = new JLabel("Street (Optional):");
 		lblcity = new JLabel("City: ");
@@ -36,11 +34,11 @@ public class InputGUI extends JFrame implements ActionListener{
 		btnclear = new JButton("Clear");
 		btnenter = new JButton("Enter");
 		pnlContain = new JPanel();
-		
+
 		btnclear.addActionListener(this);
 		btnenter.addActionListener(this);
 		btnexit.addActionListener(this);
-		
+
 		pnlContain.add(lblcity);
 		pnlContain.add(txtcity);
 		pnlContain.add(lblstate);
@@ -54,42 +52,31 @@ public class InputGUI extends JFrame implements ActionListener{
 		pnlContain.add(btnexit);
 		cp.add(pnlContain);
 	}
-	public static void main (String [] args)
-	{
-		InputGUI my = new InputGUI();
-		my.setBounds(300, 400, 1700, 200);
-		my.setVisible(true);
-	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == btnclear)
-		{
+		if (e.getSource() == btnclear) {
 			txtcity.setText("");
 			txtstate.setText("");
 			txtstreet.setText("");
 			txtcountry.setText("");
 		}
-		if (e.getSource() == btnexit)
-		{
+		if (e.getSource() == btnexit) {
 			System.exit(0);
 		}
-		if (e.getSource() == btnenter)
-		{
-			if (txtcity.getText().isEmpty() || txtcountry.getText().isEmpty())
-			{
+		if (e.getSource() == btnenter) {
+			if (txtcity.getText().isEmpty() || txtcountry.getText().isEmpty()) {
 				InputGUI my = new InputGUI();
 				JOptionPane.showMessageDialog(my, "Please enter location", "Location error", JOptionPane.ERROR_MESSAGE);
 				txtcity.requestFocus();
-			}
-			else {
-			System.out.println(txtcity.getText());
-			System.out.println(txtstate.getText());
-			System.out.println(txtstreet.getText());
-			System.out.println(txtcountry.getText());
+			} else {
+				System.out.println(txtcity.getText());
+				System.out.println(txtstate.getText());
+				System.out.println(txtstreet.getText());
+				System.out.println(txtcountry.getText());
 			}
 		}
-		
+
 	}
 }
