@@ -7,16 +7,26 @@ public class Address {
 	private String street;
 	private String city;
 	private String state;
+	private String country;
 	
-	public Address(String str, String c, String st) {
+	public Address(String str, String c, String st, String country) {
 		street = str;
 		city = c;
 		state = st;
+		this.country= country;
 	}
 
 	@Override
 	public String toString() {
-		return "Address [street=" + street + ", city=" + city + ", state=" + state + "]";
+		return "Address [street=" + street + ", city=" + city + ", state=" + state + ", country=" + country;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getStreet() {

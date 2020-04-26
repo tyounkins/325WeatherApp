@@ -71,10 +71,22 @@ public class InputGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(my, "Please enter location", "Location error", JOptionPane.ERROR_MESSAGE);
 				txtcity.requestFocus();
 			} else {
+				
+				String city = txtcity.getText();
+				String state = txtstate.getText();
+				String street = txtstreet.getText();
+				String country = txtcountry.getText();
+				
+				
 				System.out.println(txtcity.getText());
 				System.out.println(txtstate.getText());
 				System.out.println(txtstreet.getText());
 				System.out.println(txtcountry.getText());
+				
+				Address a = new Address(city, state, street, country);
+				
+				ObjectMaker om = new ObjectMaker(a);
+				
 			}
 		}
 

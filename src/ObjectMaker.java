@@ -14,14 +14,14 @@ import java.util.*;
 public class ObjectMaker {
 
 	JSONObject jsobj;
+	
 
-	public ObjectMaker() {
+	public ObjectMaker(Address address) {
 
 		/*
 		 * Where all the objects get made
 		 */
-
-		Address address = new Address("215 N. Russell Street", "West Lafayette", "IN");
+//		Address address = new Address("215 N. Russell Street", "West Lafayette", "IN");
 		DarkSkyJSONHandler js = new DarkSkyJSONHandler(address);
 		jsobj = js.parser();
 

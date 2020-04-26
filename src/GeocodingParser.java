@@ -60,6 +60,7 @@ public class GeocodingParser {
 		String adr = address.getStreet().replaceAll(" ", "+");
 		adr+= ",+" + address.getCity().replaceAll(" ", "+");
 		adr+= ",+" + address.getState().replaceAll(" ", "+");
+		adr+= ",+" + address.getCountry().replaceAll(" ", "+");
 		
 		return adr;
 		
