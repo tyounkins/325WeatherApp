@@ -40,8 +40,6 @@ public class Day
 		return summaryDay;
 	}
 	
-	
-	
 	//only to be used for present day, if we choose to use it at all
 	public String getSummaryCurrent() {
 		return summaryCurrent;

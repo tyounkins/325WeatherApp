@@ -19,8 +19,13 @@ public class InputGUI extends JFrame implements ActionListener {
 	JLabel lblstreet, lblcity, lblstate, lblcountry;
 	JTextField txtstreet, txtcity, txtstate, txtcountry;
 	JButton btnexit, btnclear, btnenter;
+	Address a;
+	ObjectMaker om;
+	boolean exit = false;
 
 	public InputGUI() {
+		Address a = null;
+		ObjectMaker om = null;
 		Container cp = getContentPane();
 		lblstreet = new JLabel("Street (Optional):");
 		lblcity = new JLabel("City: ");
@@ -53,6 +58,10 @@ public class InputGUI extends JFrame implements ActionListener {
 		cp.add(pnlContain);
 	}
 
+	public JPanel getInputGUI() {
+		return pnlContain;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -64,6 +73,7 @@ public class InputGUI extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == btnexit) {
 			System.exit(0);
+			exit = true;
 		}
 		if (e.getSource() == btnenter) {
 			if (txtcity.getText().isEmpty() || txtcountry.getText().isEmpty()) {
@@ -71,24 +81,41 @@ public class InputGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(my, "Please enter location", "Location error", JOptionPane.ERROR_MESSAGE);
 				txtcity.requestFocus();
 			} else {
-				
+
 				String city = txtcity.getText();
 				String state = txtstate.getText();
 				String street = txtstreet.getText();
 				String country = txtcountry.getText();
-				
-				
+
 				System.out.println(txtcity.getText());
 				System.out.println(txtstate.getText());
 				System.out.println(txtstreet.getText());
 				System.out.println(txtcountry.getText());
+
+				a = new Address(city, state, street, country);
+				om = new ObjectMaker(a);
 				
-				Address a = new Address(city, state, street, country);
+				System.out.println(om.getD()==null);
 				
-				ObjectMaker om = new ObjectMaker(a);
-				
+				DayGUI daygui = new DayGUI(om.getD());
+				pnlContain.add(daygui.getDayGUI());
+				this.repaint();
+//				daygui.setVisible(true);
+
 			}
 		}
 
+	}
+
+	public boolean getExit() {
+		return exit;
+	}
+
+	public ObjectMaker getObjectMaker() {
+		return om;
+	}
+
+	public Address getAddress() {
+		return a;
 	}
 }

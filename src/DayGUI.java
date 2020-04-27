@@ -5,32 +5,54 @@ import javax.swing.JPanel;
 
 /* Author: Dan */
 
-public class DayGUI extends JFrame{
+public class DayGUI {
 
-    public static void main(String[] args){
-        DayGUI daygui = new DayGUI();
-        daygui.setVisible(true);
-    }
+	/*
+	 * public static void main(String[] args){ DayGUI daygui = new DayGUI();
+	 * daygui.setVisible(true); }
+	 */
 
-    JPanel pnlContain;
-    JLabel lbltime, lbltemperature, lblprecipitation;
+	Day day;
 
-    TimeHandler timehandler = new TimeHandler();
-    Temperature temperature = new Temperature(60.0, 70.0, 60.0, 70.0, 65.0, 65.0);
-    Precipitation precipitation = new Precipitation(70.0, "Rain");
-    Day day = new Day(timehandler.getTime(), precipitation, temperature, "placeholder");
+	JPanel pnlContain;
+	JLabel lbltime, lbltemperature, lblprecipitation;
 
-    public DayGUI() {
-            Container cp = getContentPane();
-            lbltime = new JLabel(day.getDate().toString());
-            lbltemperature = new JLabel(day.getDayTemp().toString());
-            lblprecipitation = new JLabel(day.getDayPrecip().toString());
-            
-            pnlContain = new JPanel();
+	JLabel lbltime2, lbltemperature2, lblprecipitation2;
 
-            pnlContain.add(lbltime);
-            pnlContain.add(lbltemperature);
-            pnlContain.add(lblprecipitation);
-            cp.add(pnlContain);
-    }
+//    TimeHandler timehandler = new TimeHandler();
+//    Temperature temperature = new Temperature(60.0, 70.0, 60.0, 70.0, 65.0, 65.0);
+//    Precipitation precipitation = new Precipitation(70.0, "Rain");
+//    Day day = new Day(timehandler.getTime(), precipitation, temperature, "placeholder");
+
+	public JPanel getDayGUI() {
+
+
+		lbltime2 = new JLabel("Time Right Now: ");
+		lbltemperature2 = new JLabel("Temperature: ");
+		lblprecipitation2 = new JLabel("Precipitation: ");
+
+		lbltime = new JLabel(day.getDate().toString());
+		lbltemperature = new JLabel(day.getDayTemp().toString());
+		lblprecipitation = new JLabel(day.getDayPrecip().toString());
+
+		pnlContain = new JPanel();
+
+		pnlContain.add(lbltime2);
+		pnlContain.add(lbltime);
+		pnlContain.add(lbltemperature2);
+		pnlContain.add(lbltemperature);
+		pnlContain.add(lblprecipitation2);
+		pnlContain.add(lblprecipitation);
+//		cp.add(pnlContain);
+		return pnlContain;
+	}
+
+	public DayGUI(Day day) {
+		this.day = day;
+//		Container cp = getContentPane();
+		System.out.println(day == null);
+		getDayGUI();
+//		cp.add(pnlContain);
+
+	}
 }
