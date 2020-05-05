@@ -46,7 +46,7 @@ public class ObjectMaker {
 
 		d = makeDayObject();
 		System.out.println(d.toString());
-		makeSevenDayForecast();
+		sdf = makeSevenDayForecast();
 
 	}
 
@@ -144,7 +144,7 @@ public class ObjectMaker {
 		return p;
 	}
 
-	public void makeSevenDayForecast() {
+	public SevenDayForecast makeSevenDayForecast() {
 		JSONObject daily = jsobj.getJSONObject("daily");
 		JSONArray data = daily.getJSONArray("data");
 
@@ -154,6 +154,7 @@ public class ObjectMaker {
 		// present day options for Day only values you can set, with a presentDay()
 		// method, instead of as part
 		// of the constructor. Same with temperature
+		SevenDayForecast sevendf;
 
 		for (int i = 0; i < 7; i++) {
 
@@ -161,8 +162,16 @@ public class ObjectMaker {
 			// i make those methods then? IDk, im a loser
 			JSONObject item = data.getJSONObject(i);
 
-			double probability = item.getDouble("precipProbability");
-			String type = item.getString("precipType");
+			double probability;
+			String type;
+
+			try {
+				probability = item.getDouble("precipProbability");
+				type = item.getString("precipType");
+			} catch (Exception e) {
+				 probability = 0.0;
+				 type = "none";
+			}
 
 			Precipitation p = new Precipitation(probability, type);
 
@@ -192,6 +201,8 @@ public class ObjectMaker {
 			sevenDays[i] = d;
 
 		}
+		sevendf = new SevenDayForecast(sevenDays);
+		return sevendf;
 
 	}
 

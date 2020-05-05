@@ -26,6 +26,11 @@ public class Day
 		return "Day [date=" + date + ", dayPrecip=" + dayPrecip + ", dayTemp=" + dayTemp + ", summaryDay=" + summaryDay
 				+ ", summaryCurrent=" + summaryCurrent + "]";
 	}
+        
+        public String toReadableString(){
+            return "Date: " + date + "\nPrecipitation: " + dayPrecip + "\nDay Temperature: " +
+                    dayTemp + "\nSummary: " + summaryDay;
+        }
 
 	public Date getDate() {
 		return date;

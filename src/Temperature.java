@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 /* Author(s): Taylor Younkins, Taylor Kern */
 
@@ -26,6 +27,12 @@ public class Temperature {
 				+ highTemp + "°F, currentTemp=" + currentTemp + "°F, feelsLike=" + feelsLike + "°F]";
 	}
 
+    public String toReadableString(){
+        DecimalFormat df = new DecimalFormat("##");
+        return "Current: " + df.format(currentTemp) + "F High: " 
+                + df.format(highTemp) + "F Low: " + df.format(lowTemp) + "F"; 
+    }
+	
 	public double getMinTemp() {
 		return minTemp;
 	}

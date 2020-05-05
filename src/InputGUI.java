@@ -20,6 +20,9 @@ public class InputGUI extends JFrame implements ActionListener {
 	JTextField txtstreet, txtcity, txtstate, txtcountry;
 	JButton btnexit, btnclear, btnenter;
 	Address a;
+	
+	JLabel lbltime;
+	
 	ObjectMaker om;
 	boolean exit = false;
 
@@ -39,6 +42,7 @@ public class InputGUI extends JFrame implements ActionListener {
 		btnclear = new JButton("Clear");
 		btnenter = new JButton("Enter");
 		pnlContain = new JPanel();
+		lbltime = new JLabel("");
 
 		btnclear.addActionListener(this);
 		btnenter.addActionListener(this);
@@ -55,6 +59,7 @@ public class InputGUI extends JFrame implements ActionListener {
 		pnlContain.add(btnenter);
 		pnlContain.add(btnclear);
 		pnlContain.add(btnexit);
+		pnlContain.add(lbltime);
 		cp.add(pnlContain);
 	}
 
@@ -94,13 +99,20 @@ public class InputGUI extends JFrame implements ActionListener {
 
 				a = new Address(city, state, street, country);
 				om = new ObjectMaker(a);
-				
-				System.out.println(om.getD()==null);
-				
+
+				System.out.println(om.getD() == null);
+
+				TimeHandler t = new TimeHandler();
+				String locale = t.getLocale(country);
+		        lbltime.setText(t.getTime(country).toString());
+		        
 				DayGUI daygui = new DayGUI(om.getD());
-				pnlContain.add(daygui.getDayGUI());
+				pnlContain.add(daygui.getDayGUI(locale));
 				this.repaint();
-//				daygui.setVisible(true);
+
+				SevenDayForecastGUI sdfgui = new SevenDayForecastGUI(om.getSdf());
+				pnlContain.add(sdfgui.getSevenDayForecastGUI(locale));
+				this.repaint();
 
 			}
 		}

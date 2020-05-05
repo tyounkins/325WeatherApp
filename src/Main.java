@@ -21,6 +21,7 @@ public class Main {
 
 		cp.add(ig.getInputGUI());
 		frame.setSize(250, 400);
+		frame.setTitle("Weather App");
 		frame.setVisible(true);
 
 		ObjectMaker om = ig.getObjectMaker();
